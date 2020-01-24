@@ -4,7 +4,7 @@ app.controller('myCtrl', function ($scope, $http, filterFilter) {
         value: true
     };
     var env = {
-        MY_HOST_IP:'18.222.179.155'
+        MY_HOST_IP:''
     }
     $scope.checkboxes = [
         { name: 'git', selected: true },
@@ -49,7 +49,7 @@ app.controller('myCtrl', function ($scope, $http, filterFilter) {
         url: $scope.api+'/?search=git,jenkins'
     }).then(function successMethod(res) {
         $scope.video_tutorial_list = res.data;
-        console.log("Data: " + res.data);
+        console.log("Data: " + JSON.stringify(res.data));
     }, function failureMethod(res) {
         console.error("Error " + res.data)
     });
@@ -64,7 +64,7 @@ app.controller('myCtrl', function ($scope, $http, filterFilter) {
             url: url
         }).then(function successMethod(res) {
             $scope.video_tutorial_list = res.data;
-            console.log("Data: " + res.data);
+            console.log("Data: " + JSON.stringify(res.data));
         }, function failureMethod(res) {
             console.error("Error " + res.data)
         })
