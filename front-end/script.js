@@ -24,11 +24,12 @@ app.controller('myCtrl', function ($scope, $http, filterFilter) {
         });
     }, true);
 
+    $scope.api = "http://localhost:5000"
     $scope.video_tutorial_list = [];
 
     $http({
         method: 'GET',
-        url: 'http://videoservice/'
+        url: $scope.api
     }).then(function successMethod(res) {
         $scope.video_tutorial_list = res.data;
         console.log("Data: " + res.data);
@@ -39,7 +40,7 @@ app.controller('myCtrl', function ($scope, $http, filterFilter) {
     $scope.videoSearch = function (val) {
         $scope.video_tutorial_list = [];
         console.log(val);
-        url = 'http://videoservice/?search=' + val
+        url = $scope.api+'/?search=' + val
         alert(url);
         $http({
             method: 'GET',

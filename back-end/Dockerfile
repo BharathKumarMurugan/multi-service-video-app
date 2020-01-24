@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 
 RUN pip install -r requirements.txt && pip install python-dotenv
 COPY . /usr/src/app/
-EXPOSE 80
+EXPOSE 5000
 ENTRYPOINT [ "python" ]
 
 CMD [ "back-end.py" ]

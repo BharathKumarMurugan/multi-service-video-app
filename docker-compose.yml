@@ -1,22 +1,21 @@
 version: '3'
 
 services:
+  web:
+    build: ./front-end
+    container_name: web
+    volumes: 
+      - ./front-end:/usr/local/apache2/htdocs/
+    ports: 
+      - "5001:80"
+#    links:
+    depends_on: 
+      - videoservice
+
   videoservice:
     build: ./back-end
     container_name: videoservice
     volumes: 
       - ./back-end:/usr/src/app/
     ports: 
-      - "5001:80"
-
-#   web:
-#     build: ./front-end
-#     container_name: web
-#     volumes: 
-#       - ./front-end:/usr/local/apache2/htdocs/
-#     ports: 
-#       - "5000:80"
-# #    links:
-#     depends_on: 
-#       - videoservice
-
+      - "5000:5000"
